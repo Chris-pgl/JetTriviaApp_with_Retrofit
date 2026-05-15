@@ -2,6 +2,7 @@ package com.example.jettriviachris.di
 
 import com.example.jettriviachris.model.Question
 import com.example.jettriviachris.network.QuestionApi
+import com.example.jettriviachris.repo.QuestionRepository
 import com.example.jettriviachris.util.Constants
 import com.google.gson.Gson
 import dagger.Module
@@ -15,6 +16,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Singleton
+    @Provides
+    fun provideQuestionRepository(api: QuestionApi) = QuestionRepository(api)
 
     @Singleton
     @Provides
